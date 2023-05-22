@@ -67,7 +67,7 @@ namespace EstructuraDeDatos.Ejercicio7
                         {
                             string productoBuscado = Ingreso.Cadena("el producto", 1, 30, soloLetras: true);
                             List<ProductoEnt> productos = ProductoArchivo.ObtenerProducto();
-                            if (productos.Any(x=> x.Codigo == productoBuscado))
+                            if (productos.Exists(x=> x.Codigo == productoBuscado))
                             {
                                 linea.Producto = productoBuscado;
                                 break;

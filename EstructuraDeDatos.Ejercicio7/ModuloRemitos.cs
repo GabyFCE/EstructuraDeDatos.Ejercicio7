@@ -63,7 +63,21 @@ namespace EstructuraDeDatos.Ejercicio7
                     {
                         LineaEnt linea = new LineaEnt();
                         linea.Cantidad = Ingreso.Entero("la cantidad", 1, 100);
-                        linea.Producto = Ingreso.Cadena("el producto", 1, 30, soloLetras:true);
+                        while (true)
+                        {
+                            string productoBuscado = Ingreso.Cadena("el producto", 1, 30, soloLetras: true);
+                            List<ProductoEnt> productos = ProductoArchivo.ObtenerProducto();
+                            if (productos.Any(x=> x.Codigo == productoBuscado))
+                            {
+                                linea.Producto = productoBuscado;
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("No se encontró el producto, deberá volver a probar");
+                            }
+
+                        }
                         linea.Peso = Ingreso.Decimal("el peso", 1, 1000);
                         lineas.Add(linea);
                         Console.WriteLine("Se ha agregado una linea");
